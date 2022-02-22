@@ -1,21 +1,23 @@
 def match(ps):
-    ps=list(ps)
-    temp=[]
-    dictt={"{":"}","(":")","[":"]"}
+    ps = list(ps)
+    # you are using this list as stack so name it stack instead of temp
+    stack = []
+    dictt = {"{": "}", "(": ")", "[": "]"}
     for x in ps:
-        if x in dictt.keys():
-            temp.append(x)
-        if x in dictt.values():
-            try:
-                t=temp.pop()
-                if(dictt[t]!=x):
-                    return False    
-            except:
-                return False           
-    if(len(temp)==0):
+        # you are using dict as list instead of that you can get the value from dict
+        # if it comes nil that means key does not exist in the map
+        val = dictt.get(x)
+        if val is None:
+            if val != x:
+                return False
+            else:
+                stack.pop()
+        else:
+            stack.append(x)
+    if len(stack) == 0:
         return True
     else:
-        return False    
+        return False
 
 
 if __name__ == '__main__':
