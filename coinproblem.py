@@ -1,6 +1,7 @@
 def countCoins(A):
     Amount=A[0]
     Coins=A[1]
+    Coins.sort()
     x=len(Coins)-1
     while(x>=0):
         temp=Coins[x]
@@ -10,7 +11,7 @@ def countCoins(A):
     return Coins
 
 if __name__=="__main__":
-    testcase=[[10,[1,3,5]],[12,[1,3,5,10]]]
+    testcase=[[10,[1,3,5]],[12,[10,3,5,1]]]
     result=[[0,0,2],[2,0,0,1]]
     for i in range(0,len(testcase)):
         if countCoins(testcase[i])==result[i]:
